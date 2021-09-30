@@ -26,10 +26,8 @@ export default class VigenereCipheringMachine {
 	}
 
   encrypt(message, key) {
-    try {
-      !message || !key;
-    } catch(e) {
-      throw new Error(e);
+   if (arguments.length !== 2 || typeof (arguments[0]) !== 'string') {
+      throw new Error('Incorrect arguments!');
     }
 
     let alph = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
@@ -59,10 +57,8 @@ export default class VigenereCipheringMachine {
   }
    
   decrypt(message, key) {
-    try {
-      !message || !key;
-    } catch(e) {
-      throw new Error(e);
+   if (arguments.length !== 2 || typeof (arguments[0]) !== 'string') {
+      throw new Error('Incorrect arguments!');
     }
 
     let alph = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
