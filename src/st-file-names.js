@@ -15,7 +15,20 @@ import { NotImplementedError } from '../extensions/index.js';
  * the output should be ["file", "file(1)", "image", "file(1)(1)", "file(2)"]
  *
  */
-export default function renameFiles(/* names */) {
-  throw new NotImplementedError('Not implemented');
-  // remove line with error and write your code here
+export default function renameFiles(names) {
+const res = [names[0]];
+   if (names.length === 0) {
+     return [];
+   }
+   for (let i = 1; i < names.length; i++) {
+     let k;
+     if (res.includes(names[i])) {
+       const n = names.slice(0, i).filter((name) => name === names[i]).length;
+       k = n > 0 ? n : 1;
+       res.push([names[i], '(', k, ')'].join(''));
+     } else {
+       res.push(names[i]);
+     }
+   }
+   return res;
 }
